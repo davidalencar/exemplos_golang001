@@ -1,12 +1,13 @@
 package main
 
+import "fmt"
+
 func main() {
 	cards := newDeck()
 
-	cards = append(cards, "6 de Espadas")
-	cards.print()
-}
-
-func newCard() string {
-	return "5 de espadas"
+	hand, remainingCards := deal(cards, 3)
+	fmt.Println("Na minha mão")
+	hand.print()
+	fmt.Println("Na mesa")
+	remainingCards.print()
 }

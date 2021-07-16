@@ -16,7 +16,7 @@ func newDeck() deck {
 	cards := deck{}
 
 	cardSuits := []string{"Espadas", "Paus", "Diamantes", "Coração"}
-	cardValues := []string{"As", "Dois", "Tres", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove", "Valete", "Dama", "Rei"}
+	cardValues := []string{"As", "Dois", "Tres", "Quatro"}
 
 	for _, suit := range cardSuits {
 		for _, value := range cardValues {
@@ -25,4 +25,8 @@ func newDeck() deck {
 	}
 
 	return cards
+}
+
+func deal(d deck, handsize int) (deck, deck) {
+	return d[:handsize], d[handsize:]
 }
