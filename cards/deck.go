@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -29,6 +30,20 @@ func newDeck() deck {
 	}
 
 	return cards
+}
+
+func newDeckFromFile(fileName string) deck {
+	data, e := ioutil.ReadFile(fileName)
+
+	if e != nil {
+		fmt.Println("Error:", e)
+		os.Exit(1)
+	}
+
+	innerText := string(data)
+	s := strings.Split(innerText, ",")
+
+	return deck(s)
 }
 
 func deal(d deck, handsize int) (deck, deck) {
