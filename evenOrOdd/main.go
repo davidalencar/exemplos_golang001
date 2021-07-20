@@ -19,7 +19,6 @@ func checkEvenOrOdd(val int) string {
 }
 
 func main() {
-
 	vals := createSliceOfInt(10)
 
 	for _, v := range vals {
