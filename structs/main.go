@@ -13,17 +13,19 @@ type person struct {
 	contact   contactInfo
 }
 
+func (p person) print() {
+
+	fmt.Printf("%+v\n", p)
+}
+
+/*O operador * antes do tipo indica que a função
+espera um ponteiro apontando para uma variável
+daquele tipo (byRef no C#)*/
+func (p *person) updFirstName(name string) {
+	p.firstName = name
+}
+
 func main() {
-
-	var bruce person
-
-	bruce.firstName = "Bruce"
-	bruce.lastName = "Alencar"
-	bruce.contact.email = "bruce@gmail.com"
-	bruce.contact.zipCode = 10000
-
-	fmt.Printf("%+v", bruce)
-
 	david := person{
 		firstName: "David",
 		lastName:  "Alencar",
@@ -33,5 +35,11 @@ func main() {
 		},
 	}
 
-	fmt.Printf("%+v", david)
+	david.print()
+
+	davidPointer := &david //O operador & cria um ponteiro para variável
+	davidPointer.updFirstName("Sr. David")
+	davidPointer.print()
+	david.print() // O valor alterado no ponteiro davidPointer reflete em david
+
 }
