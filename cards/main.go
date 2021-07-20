@@ -4,8 +4,9 @@ import "fmt"
 
 func main() {
 	cards := newDeck()
-	cards.saveToFile("./cards.txt")
-	cards2 := newDeckFromFile("./cards.txt")
-	fmt.Println(cards2)
+	cards.print()
+	fmt.Println("------")
+	cards.shuffler()
+	cards.print()
 
 }
