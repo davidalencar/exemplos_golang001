@@ -37,9 +37,19 @@ func main() {
 
 	david.print()
 
+	// Criando ponteiro
 	davidPointer := &david //O operador & cria um ponteiro para variável
 	davidPointer.updFirstName("Sr. David")
 	davidPointer.print()
 	david.print() // O valor alterado no ponteiro davidPointer reflete em david
+	// Alterando um valor com uma funcao que espera um ponteiro
+	david.updFirstName("Minha nossa")
+	david.print()
 
+	// Testando sintaxe para criar um pointeiro.
+	(&david).updFirstName("Eita nois")
+	david.print()
+	// Caso eu tenha uma func que recebe um valor comum eu posso usar
+	// essa sintaxe para mandar um ponteiro
+	fmt.Println(&david)
 }
