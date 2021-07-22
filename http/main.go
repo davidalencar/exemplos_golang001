@@ -22,5 +22,5 @@ func main() {
 
 func (logW) Write(p []byte) (int, error) {
 	fmt.Println(string(p))
-	return 1, nil
+	return len(p), io.EOF
 }
