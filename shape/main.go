@@ -23,15 +23,11 @@ func (t triangle) getArea() float64 {
 	return 0.5 * t.base * t.height
 }
 
-func main() {
-	t := triangle{
-		base:   10,
-		height: 10,
-	}
-	s := square{
-		sideLenght: 10,
-	}
+func printArea(s shape) {
+	fmt.Println("Area:", s.getArea())
+}
 
-	fmt.Println("Triangle area:", t.getArea())
-	fmt.Println("Square area:", s.getArea())
+func main() {
+	printArea(triangle{base: 10, height: 10})
+	printArea(square{sideLenght: 10})
 }
