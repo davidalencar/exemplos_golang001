@@ -2,9 +2,12 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 )
+
+type logW struct{}
 
 func main() {
 	resp, err := http.Get("http://www.google.com")
@@ -13,9 +16,11 @@ func main() {
 		os.Exit(-1)
 	}
 
-	bodyData := make([]byte, 99999)
-	l, e := resp.Body.Read(bodyData)
+	lw := logW{}
+	io.Copy(lw, resp.Body)
+}
 
-	fmt.Println(l, e)
-	fmt.Println(string(bodyData))
+func (logW) Write(p []byte) (int, error) {
+	fmt.Println(string(p))
+	return 1, nil
 }
